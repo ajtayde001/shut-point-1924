@@ -9,6 +9,7 @@ import JeansPage from '../pages/JeansPage';
 import WomenPage from '../pages/WomenPage';
 import Navbar from './Navbar';
 import Footer from '../pages/Footer';
+import ProductPAge from '../pages/ProductPAge';
 const AllRoutes = () => {
     return (
         <div>
@@ -16,6 +17,7 @@ const AllRoutes = () => {
             <Routes>
                 <Route path="/" element={<MainPage />}></Route>
                 <Route path="/men" element={<MenPage />}></Route>
+                <Route path="/products/:user_id" element={<ProductPAge />}></Route>
                 <Route path="/women" element={<WomenPage />}></Route>
                 <Route path="/winter" element={<WinterPage />}></Route>
                 <Route path="/sale" element={<SalePage />}></Route>

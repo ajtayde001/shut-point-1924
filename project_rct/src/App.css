@@ -81,7 +81,7 @@ margin-top: 50%;
   background-color: white
 }
 .ThisAll{
-  margin-top: 100px;
+  margin-top: 40px;
   content: "";
   background: url("https://imagescdn.aeo.in/img/app/brands/ae/30-01-2023/desktop/AE_D_P1_30012023.jpg?w=463&auto=format")
   no-repeat center center/cover;
@@ -92,7 +92,7 @@ margin-top: 50%;
   
 }
 .ThisAll1{
-  margin-top: 100px;
+  margin-top: 20px;
   content: "";
   background: url("https://imagescdn.aeo.in/img/app/brands/ae/AE_D_P3_15022023.jpg?w=1043&auto=format")
   no-repeat center center/cover;
@@ -212,4 +212,71 @@ margin-top: 50px;
   
   border-radius: 50px;
   background-color: rgb(245, 145, 57)
+  }
+
+  
+  .navbar {
+    display: flex;
+    position: relative;
+    z-index: 999;
+    padding: 20px;
+    justify-content: space-around;
+    height: 62px;
+    width: 100%;
+    background-color: #fff;
+  }
+  
+  .sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 62px;
+  }
+  
+  .icon{
+    display: flex;
+  }
+  .item :hover
+  {
+    background-color: black;
+  }
+  .nav-link {
+    padding: 20px;
+    text-decoration: none;
+    background-color: white;
+    color: #0E1333;
+    font-family: 'Gilroy-ExtraBold';
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  .nav-link:hover {
+    padding: 20px;
+    background-color: #0E1333;
+    color: #fff;
+  }
+  a.nav-link.active:hover {
+    color: white
+  }
+  .modal{
+    position:absolute;
+ display: flex;
+      /*  overflow-y:scroll;
+    max-height:250px;
+    height: 200px;
+    width: 100%; */
+    width: 100%; 
+    margin-left: 2%;
+    margin-right: 2%;
+    z-index:999;
+    background:white;
+    padding:10px;
+   
+   
   }

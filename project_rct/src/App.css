@@ -221,7 +221,7 @@ margin-top: 50px;
     z-index: 999;
     padding: 20px;
     justify-content: space-around;
-    height: 62px;
+    height: 80px;
     width: 100%;
     background-color: #fff;
   }
@@ -230,7 +230,7 @@ margin-top: 50px;
     position: fixed;
     top: 0;
     left: 0;
-    height: 62px;
+    height: 100px;
   }
   
   .icon{

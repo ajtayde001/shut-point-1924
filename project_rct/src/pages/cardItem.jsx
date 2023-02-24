@@ -1,13 +1,14 @@
 import {Link,Heading,ButtonGroup, Button,Divider,Text,Stack,Image,Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
-function CardItem({data}){
+function CardItem({data,cardData}){
     // console.log(data)
   
     return(
-        <Link href={`/products/${data.id}`}>
+        // <Link href={`/products/${data.id}`}>
      
-     <Card w="90%">
+     <Card w="90%" >
         <CardBody>
+        <Link href={`/products/${data.id}`}>
           <Image
             src={data.avatar}
             alt={data.name}
@@ -15,8 +16,10 @@ function CardItem({data}){
             w="100%" h="320px"
            
           />
+              </Link>
           <Stack mt='6' spacing='3'>
-            <Heading size='md'>{data.name}</Heading>
+          <Link href={`/products/${data.id}`}> 
+            <Heading size='md'>{data.name}</Heading>  </Link>
             {/* <Text>
             {data.discription}
             </Text> */}
@@ -31,13 +34,13 @@ function CardItem({data}){
             <Button variant='solid' colorScheme='blue'>
               Buy now
             </Button>
-            <Button variant='ghost' colorScheme='blue'>
+            <Button variant='ghost' colorScheme='blue' onClick={()=>cardData(data.id)}>
               Add to cart
             </Button>
           </ButtonGroup>
         </CardFooter>
       </Card>
-        </Link>
+        // </Link>
         
     )
 }

@@ -1,6 +1,13 @@
+import CardItemData from "../cardComponent/Card";
+
+
+
 function SalePage(){
+
+ 
     return(
-        <div>saleage</div>
+      
+   <CardItemData/>
     )
 }
 

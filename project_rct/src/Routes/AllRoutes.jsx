@@ -10,6 +10,7 @@ import WomenPage from '../pages/WomenPage';
 import Navbar from './Navbar';
 import Footer from '../pages/Footer';
 import ProductPAge from '../pages/ProductPAge';
+import SingUp from '../pages/SingUp';
 const AllRoutes = () => {
     return (
         <div>
@@ -25,6 +26,7 @@ const AllRoutes = () => {
 
             
                 <Route path="/login" element={<Login />}></Route>
+                <Route path="/singup" element={<SingUp />}></Route>
             </Routes>
             <Footer/>
         </div>

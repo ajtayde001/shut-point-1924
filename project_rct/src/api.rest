@@ -1,0 +1,162 @@
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": " Men black Tropical Button-Up Resort Shirt ",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/8/814105-10157123.jpg?w=163&auto=format",
+#     "price": 2928,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "l",
+#     "color": "black",
+#     "discount": "50%",
+#     "mainTypes": "men",
+#     "types": "tops",
+#     "subTypes": "shirt",
+#     "rating": 3.7
+  
+    
+# }
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": " Printed Slim Fit Everyday ",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/8/815978-9744441.jpg?w=163&auto=format",
+#     "price": 688,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "xl",
+#     "color": "red",
+#     "discount": "40%",
+#     "mainTypes": "men",
+#     "types": "bottom",
+#     "subTypes": "shirt",
+#     "rating": 3.5
+  
+    
+# }
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#     "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": "  Board Short ",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/8/862718-10196400.jpg?w=163&auto=format",
+#     "price": 788,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "xl",
+#     "color": "green",
+#     "discount": "40%",
+#     "mainTypes": "men",
+#     "types": "underwear",
+#     "subTypes": "shorts",
+#     "rating": 3.9
+#   }
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": "  Men Blace Web Belt",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/6/660252-7184459.jpg?w=317&auto=format",
+#     "price": 988,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "xl",
+#     "color": "black",
+#     "discount": "40%",
+#     "mainTypes": "men",
+#     "types": "accessories",
+#     "subTypes": "belt",
+#     "rating": 3.9
+  
+    
+# }
+
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": "  Black Long-Sleeve Plush Mock Neck Shirt",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/7/731130-9378852.jpg?w=317&auto=format",
+#     "price": 798,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "l",
+#     "color": "green",
+#     "discount": "40%",
+#     "mainTypes": "women",
+#     "types": "tops",
+#     "subTypes": "tshirt",
+#     "rating": 4.2
+  
+    
+# }
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": "  Suede Slide Sandal ",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/6/674790-7396955.jpg?w=163&auto=format",
+#     "price": 998,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "xl",
+#     "color": "green",
+#     "discount": "60%",
+#     "mainTypes": "women",
+#     "types": "accessories",
+#     "subTypes": "shoes",
+#     "rating": 4.5
+  
+    
+# }
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": "Waisted Jegging",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/7/768721-9521531.jpg?w=317&auto=format",
+#     "price": 2488,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "xl",
+#     "color": "blue",
+#     "discount": "20%",
+#     "mainTypes": "women",
+#     "types": "bottom",
+#     "subTypes": "jeans",
+#     "rating":4
+  
+    
+# }
+
+# POST https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle
+# Content-Type: application/json
+
+# {  
+#      "createdAt": "2023-02-22T21:25:43.703Z",
+#     "name": "  Orange Long-Sleeve Midi Shirt Dress",
+#     "avatar": "https://imagescdn.aeo.in/img/app/product/8/806039-10145795.jpg?w=317&auto=format,compress",
+#     "price": 4568,
+#     "discription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+#     "size": "l",
+#     "color": "yellow",
+#     "discount": "50%",
+#     "mainTypes": "women",
+#     "types": "dresses",
+#     "subTypes": "dress",
+#     "rating": 3.9
+  
+    
+# }
+
+
+#   https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle

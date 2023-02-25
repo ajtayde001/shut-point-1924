@@ -280,3 +280,21 @@ margin-top: 50px;
    
    
   }
+  .accordin-title
+  {
+   width: auto; 
+    font-size: small;
+  }
+  .accordin-title:hover
+  {
+    width: auto; 
+    background-color: #0E1333;
+    font-size: small;
+    color: #fff;
+  }
+  .footer {
+    position: relative;
+    margin: 0px;
+    background-color: #f5f5f5;
+    padding: 0px;
+  }

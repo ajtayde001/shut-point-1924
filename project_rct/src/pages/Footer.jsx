@@ -12,7 +12,10 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 
 const Footer = () => (
+  
   <Container as="footer" role="contentinfo" style={{display: "unset"}}>
+    <Divider />
+    <Divider />
   <Stack
     spacing="8"
     direction={{
@@ -25,6 +28,7 @@ const Footer = () => (
       md: '16',
     }}
   >
+    
      <Stack
       direction={{
         base: 'column-reverse',
@@ -138,9 +142,9 @@ const Footer = () => (
           }}
         >
           <Input placeholder="Enter your email" type="email" required />
-          <Button variant="primary" type="submit" flexShrink={0}>
+          {/* <Button variant="primary" type="submit" flexShrink={0}>
             Subscribe
-          </Button>
+          </Button> */}
         </Stack>
       </Stack>
     </Stack>

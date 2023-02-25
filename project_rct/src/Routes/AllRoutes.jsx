@@ -11,6 +11,8 @@ import Navbar from './Navbar';
 import Footer from '../pages/Footer';
 import ProductPAge from '../pages/ProductPAge';
 import SingUp from '../pages/SingUp';
+import CardPage from '../pages/CardPage';
+import Checkout from '../pages/Checkout';
 const AllRoutes = () => {
     return (
         <div>
@@ -23,12 +25,13 @@ const AllRoutes = () => {
                 <Route path="/winter" element={<WinterPage />}></Route>
                 <Route path="/sale" element={<SalePage />}></Route>
                 <Route path="/jeans" element={<JeansPage />}></Route>
-
+                <Route path="/_card" element={<CardPage />}></Route>
+                <Route path="/checkout/:total" element={<Checkout />}></Route>
             
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/singup" element={<SingUp />}></Route>
             </Routes>
-            <Footer/>
+          
         </div>
     )
 }

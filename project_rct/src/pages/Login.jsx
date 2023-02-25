@@ -50,18 +50,19 @@ export default function Login() {
   }
 return(
  
-<div className="main" style={{ width: "40%",
-margin: "auto",
-marginTop:" 5%",
-boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-paddingTop: "2%",}}>
+<div className="main" >
 
 
 
 <div className="modal">
 
  <form className="modal-content">
-   <div className="container">
+   <div style={{ width: "40%",
+margin: "auto",
+marginTop:" 5%",
+boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+padding:"30px",
+paddingTop: "2%",}}>
    <h2 style={{fontSize:"30px"}}>{name}</h2>
      
 

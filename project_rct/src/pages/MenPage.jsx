@@ -1,9 +1,11 @@
+
 import React from 'react'
 import { Link, useSearchParams } from "react-router-dom";
-import { useState, useEffect } from 'react'
+import { useState, useEffect ,useContext} from 'react'
+import { AuthConetxt } from '../Context/AuthContextProvider';
 import CardItem from './cardItem';
 import Accodion from './Accodion';
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+import { CircularProgress, CircularProgressLabel ,Spinner} from '@chakra-ui/react'
 const getData = (url) => {
     return fetch(url).then((res) => res.json())
 }
@@ -13,26 +15,124 @@ const getNumber = (page) => {
     return cPage
 }
 
+const filterArray=[{
+    "type":"Category",
+    "list": [
+        "shirt",
+"shorts",
+"belt",
+      "Athletic Fit Jeans",
+"Baggy Jeans",
+"Bootcut Jeans",
+"Bottoms",
+"Chinos",
+"Denim Joggers",
+"Graphic Tees",
+"Hats",
+"Hoodies",
+"Jackets",
+"Joggers",
+"Loose Fit Jeans",
 
+"Skinny Jeans",
+"Slim Jeans",
+"Slim Straight Jeans",
+"Socks",
+"Straight Jeans",
+"Sweaters",
+"T-Shirts",
+"Tapered Jeans",
+"Underwear",
+"Wallets"
+  ]
+  },
+  {
+    "type":"Price",
+    "list": [
+        
+        "588 AND ABOVE ",
+        "1000 AND ABOVE",
+       ]
+  },
+  {
+    "type":"Product Type",
+    "list": [
+      "Bootcut Jeans",
+"Hats"  ]
+  },
+  {
+    "type":"Fit",
+    "list": [
+      "Original Bootcut",
+"Hats"  ]
+  },
+  {
+    "type":"Sizes",
+    "list": [
+      "l",
+"xl"  ]
+  },
+  {
+    "type":"Color",
+    "list": [
+      "black",
+"blue" ,"red","green" ]
+  }]
 
 
 function MenPage() {
+    const {serach}= useContext(AuthConetxt);
     let carddata = JSON.parse(localStorage.getItem("newcard_data"));
     if (carddata == null) {
         carddata = []
     }
     const [product, setProduct] = useState([])
+    const [selectedFilter, setSelectedFilter] = useState('')
+
     const [loading, setloading] = useState(false)
     let [serch, setSarch] = useSearchParams()
     const [page, setPAGE] = useState(getNumber(serch.get("page")) || 1)
 
     const fetchApiData = async () => {
-        setloading(false)
+        setloading(true)
         try {
-            const data = await getData(`https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle?mainTypes=women&page=${page}&limit=15`)
-            console.log(data)
-            setloading(true)
-            setProduct(data)
+            const data = await getData(`https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle`)
+           
+            let filteredData;
+   
+ 
+    setProduct(data)
+    let price;
+ 
+
+  if(selectedFilter=='588 AND ABOVE' )
+{
+    price=588;
+}
+else if(selectedFilter=='1000 AND ABOVE' )
+{
+    price=1000;
+}
+    if(selectedFilter)
+    {
+
+
+         filteredData=data.filter(item=>item.subTypes===selectedFilter ||item.size===selectedFilter|| item.color===selectedFilter  || item.price> price )
+            
+         setProduct(filteredData)
+       
+    }
+    if(serach)
+    {
+    
+    const filteredData =  product.filter((item) => {
+        return Object.values(item).join('').toLowerCase().includes(serach.toLowerCase())
+    })
+    console.log("___________",filteredData)
+    setProduct(filteredData)
+}
+      setloading(false)
+          
 
         } catch (error) {
             setloading(false)
@@ -41,12 +141,12 @@ function MenPage() {
 
 
     }
-    console.log(product)
+
 
     useEffect(() => {
         fetchApiData()
 
-    }, [page]);
+    }, [page,selectedFilter,serach]);
 
 
     useEffect(() => {
@@ -64,8 +164,6 @@ function MenPage() {
     // console.log(menData)
     }
 
-   console.log(carddata)
-   
     return (
         
         <div style={{
@@ -74,21 +172,28 @@ function MenPage() {
             margin: "auto",
             padding: "10px",
             marginTop: "1px",
-            gap:"50px"
+            gap:"50px",
+           
         }}>
            
             <div style={{
                  position: "fixed",
                  top: 0,
                  left: 0,
-                 height: "500px",
-                border: "2px solid black",
-                width: "200px",
+                
+              
+                width: "300px",
                 margin: "auto",
                 padding: "10px",
                 marginTop: "100px"
             }}>
-                <Accodion />
+                <div >
+                <b>Filter</b>
+                <div style={{color:'gray'}}>{product.length}  items </div>
+                </div>
+                <div style={{height:800,overflow:'scroll'}}>
+                <Accodion list={filterArray} setSelectedFilter={setSelectedFilter}  />
+                </div>
             </div>
           
             <div>
@@ -101,11 +206,23 @@ function MenPage() {
                     width: "80%",
                     margin: "auto",
                     gap: "10px",
+                 
                     marginLeft:"250px"
                 }}>
 
-                    {product?.map((e) => {
 
+
+                    {     loading ?   <div style={{
+                    display: "flex",
+
+                   
+                    justifyContent: "center",
+                   
+
+                }}><Spinner /></div>:
+                product.length>0 ?
+                product?.map((e) => {
+if(e.mainTypes==='men')
                         return (
                             <CardItem data={e} cardData={cardData}
                              />
@@ -113,11 +230,13 @@ function MenPage() {
                         )
 
 
-                    })}
+                    }):<div style={ {display: "flex",justifyContent:'center'}}>
+                        No Data</div>}
+                    
 
                 </div>
                 <br /><br />
-                <div style={{
+                {/* <div style={{
                     display: "flex",
 
                     //  border:"2px solid black",
@@ -152,7 +271,7 @@ function MenPage() {
                         padding: "10px"
 
                     }}>next</button>
-                </div>
+                </div> */}
 
             </div>
             

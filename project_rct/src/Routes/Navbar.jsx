@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
+import { AuthConetxt } from '../Context/AuthContextProvider';
 import {
-  Input
+  Input,Divider
 } from '@chakra-ui/react'
 import { FaSearch, FaHeart, FaShoppingBag ,FaUser} from 'react-icons/fa'
 function Navbar() {
   const [stickyClass, setStickyClass] = useState('');
   const [show, setShow] = useState(false);
+  const {serach,setSearch}= useContext(AuthConetxt);
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -33,15 +35,15 @@ function Navbar() {
         <Link to="/singup" className='nav-link'  >SingUp</Link>
 
 
-
+        
        
 
-        <div className="icon">
-          <Input placeholder='Search' style={{ width: 200 }} />
-          <Link to="/login"  >  <FaUser fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} /></Link>
+        <div className="icon" style={{  gap:"20px"}} >
+          <Input placeholder='Search' style={{ width: 200 }}onChange={(e)=>setSearch(e.target.value)} />
           <FaSearch fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} />
+          <Link to="/login"  >  <FaUser fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} /></Link>
           <FaHeart fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} />
-          <FaShoppingBag fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} />
+          <Link to="/_card"  >    <FaShoppingBag fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} /></Link>
         </div>
       </div>
       {/* 
@@ -92,6 +94,7 @@ function Navbar() {
  </Container>
            
            </div>} */}
+            <Divider />
     </div>
   )
 }

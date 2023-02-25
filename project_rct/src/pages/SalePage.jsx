@@ -1,4 +1,4 @@
-import CardItemData from "../cardComponent/Card";
+// import CardItemData from "../cardComponent/Card";
 
 
 
@@ -6,8 +6,10 @@ function SalePage(){
 
  
     return(
-      
-   <CardItemData/>
+      <div>
+        <h1>for sell</h1>
+      </div>
+//    <CardItemData/>
     )
 }
 

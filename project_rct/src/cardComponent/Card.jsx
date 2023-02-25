@@ -37,26 +37,14 @@ import { useState,useEffect } from 'react';
    
     }, []);
 
-    useEffect(() => {
-
-     
-      let sumvalueabc=0
-      
-      
-    for(let i=0;i<mainData.length;i++){
-    sumvalueabc+=(+(mainData[i].quantity))*(+(mainData[i].price))
-     }
-     setSum(sumvalueabc)
-   
-    }, [value,mainData]);
+    
   
     const onClickDelete=(id)=>{
-      alert("dlt")
+      alert("This data will be Deleted From Your Card")
        let filte=mainData.filter((e)=>{
         return e.id!==id 
        })
-      //  
-      // carddata.push(filte)
+      
        localStorage.setItem("newcard_data", JSON.stringify(filte));
        setMainData(filte)
     }
@@ -69,10 +57,22 @@ import { useState,useEffect } from 'react';
     const updatedData = mainData.map((item) =>
         item.id === id ? { ...item, quantity: e} : item
       );
-      setValue(updatedData);
+      setMainData(updatedData);
     //  console.log(value)
       
     }
+    useEffect(() => {
+
+     
+      let sumvalueabc=0
+      
+      
+    for(let i=0;i<mainData.length;i++){
+    sumvalueabc+=(+(mainData[i].quantity))*(+(mainData[i].price))
+     }
+     setSum(sumvalueabc)
+   
+    }, [mainData]);
 
     console.log(mainData)
      return(
@@ -114,7 +114,7 @@ import { useState,useEffect } from 'react';
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart (3 items)
+           { `Shopping Cart (${mainData.length} items)`}
           </Heading>
   
           <Stack spacing="6">

@@ -91,17 +91,19 @@ function SingUp(){
     const [email, setlogin]=useState("")
     const [password, setpass]=useState("")
     const [name, setname]=useState("")
-
+    const [nameLoag, setnamevalue]=useState("Pleas SingUp")
     const submitChange = (e) => {
         e.preventDefault();
         let isnew = true
         
         for (let i = 0; i < data.length; i++) {
             if (data[i].email == email) {
+              setnamevalue("This Email Is Already Used")
                 isnew = false
             }
         }
     if(isnew==true){
+      setnamevalue("Account Created Successful")
         login()
         const valueIN={
             name,
@@ -118,7 +120,10 @@ function SingUp(){
       };
     }
     if(isAuth){
-            return <Navigate to={"/login"}/>
+      
+        return <Navigate to={"/login"}/>
+    
+           
           }
 return(
    
@@ -129,12 +134,17 @@ return(
   paddingTop: "2%",}}>
 
 
- <h2 id="head">Create Your Account</h2>
+
  <div id="id01" className="modal">
 
-   <form className="modal-content">
+   <form className="modal-content" style={{ width: "40%",
+margin: "auto",
+marginTop:"10%",
+boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+padding:"30px",
+paddingTop: "2%",}}>
      <div className="container">
-
+     <h2 style={{fontSize:"30px"}}>{nameLoag}</h2>
        <label for="email"><b>Name</b></label>
        <input type="text" id="name" placeholder="Enter Your Name"
         onChange={(e)=>setname(e.target.value)}/>
@@ -149,7 +159,7 @@ return(
 
        <div className="clearfix">
 
-         <button style={{backgroundColor:"green"}} type="submit" id="signupbtn" onClick={submitChange}>Sign Up</button>
+         <button style={{backgroundColor:"green",height:"50px"}} type="submit" id="signupbtn" onClick={submitChange}>Sign Up</button>
 
         
        </div>

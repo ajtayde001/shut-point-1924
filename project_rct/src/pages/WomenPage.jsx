@@ -186,7 +186,13 @@ const filterArray=[{
         "588 AND ABOVE ",
         "1000 AND ABOVE",
        ]
-  }]
+  },
+  {
+    "type": "Sort",
+    "list": [
+        "price:lowest first",
+        "price:hightest first", "Discount"]
+}]
 function WomenPage(){
     const {serach}= useContext(AuthConetxt);
     const [selectedFilter, setSelectedFilter] = useState('')
@@ -224,6 +230,33 @@ function WomenPage(){
   }
       if(selectedFilter)
       {
+        if(selectedFilter=='price:lowest first')
+        {
+            console.log("here-->>",data)
+            data.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+            console.log("after here-->>",data)
+            setProduct(data)
+            setloading(false)
+            return;
+        }
+        if(selectedFilter=='price:hightest first')
+        {
+            console.log("here-->>",data)
+            data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+            console.log("after here-->>",data)
+            setProduct(data)
+            setloading(false)
+            return;
+        }
+        if(selectedFilter=='Discount')
+        {
+            console.log("here-->>",data)
+            data.sort((a, b) => parseFloat(b.discount) - parseFloat(a.discount));
+            console.log("after here-->>",data)
+            setProduct(data)
+            setloading(false)
+            return;
+        }
    filteredData=data.filter(item=>item.subTypes===selectedFilter ||item.size===selectedFilter|| item.color===selectedFilter  || item.price> price )
    setProduct(filteredData)
          

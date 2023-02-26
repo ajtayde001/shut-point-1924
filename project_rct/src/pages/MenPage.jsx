@@ -1,11 +1,12 @@
 
 import React from 'react'
 import { Link, useSearchParams } from "react-router-dom";
-import { useState, useEffect ,useContext} from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { AuthConetxt } from '../Context/AuthContextProvider';
 import CardItem from './cardItem';
 import Accodion from './Accodion';
-import { CircularProgress, CircularProgressLabel ,Spinner} from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
+import { CircularProgress, CircularProgressLabel, Spinner } from '@chakra-ui/react'
 const getData = (url) => {
     return fetch(url).then((res) => res.json())
 }
@@ -15,78 +16,89 @@ const getNumber = (page) => {
     return cPage
 }
 
-const filterArray=[{
-    "type":"Category",
+const filterArray = [{
+    "type": "Category",
     "list": [
         "shirt",
-"shorts",
-"belt",
-      "Athletic Fit Jeans",
-"Baggy Jeans",
-"Bootcut Jeans",
-"Bottoms",
-"Chinos",
-"Denim Joggers",
-"Graphic Tees",
-"Hats",
-"Hoodies",
-"Jackets",
-"Joggers",
-"Loose Fit Jeans",
+        "shorts",
+        "belt",
+        "Athletic Fit Jeans",
+        "Baggy Jeans",
+        "Bootcut Jeans",
+        "Bottoms",
+        "Chinos",
+        "Denim Joggers",
+        "Graphic Tees",
+        "Hats",
+        "Hoodies",
+        "Jackets",
+        "Joggers",
+        "Loose Fit Jeans",
 
-"Skinny Jeans",
-"Slim Jeans",
-"Slim Straight Jeans",
-"Socks",
-"Straight Jeans",
-"Sweaters",
-"T-Shirts",
-"Tapered Jeans",
-"Underwear",
-"Wallets"
-  ]
-  },
-  {
-    "type":"Price",
+        "Skinny Jeans",
+        "Slim Jeans",
+        "Slim Straight Jeans",
+        "Socks",
+        "Straight Jeans",
+        "Sweaters",
+        "T-Shirts",
+        "Tapered Jeans",
+        "Underwear",
+        "Wallets"
+    ]
+},
+{
+    "type": "Price",
     "list": [
-        
+
         "588 AND ABOVE ",
         "1000 AND ABOVE",
-       ]
-  },
-  {
-    "type":"Product Type",
+    ]
+},
+{
+    "type": "Product Type",
     "list": [
-      "Bootcut Jeans",
-"Hats"  ]
-  },
-  {
-    "type":"Fit",
+        "Bootcut Jeans",
+        "Hats"]
+},
+{
+    "type": "Fit",
     "list": [
-      "Original Bootcut",
-"Hats"  ]
-  },
-  {
-    "type":"Sizes",
+        "Original Bootcut",
+        "Hats"]
+},
+{
+    "type": "Sizes",
     "list": [
-      "l",
-"xl"  ]
-  },
-  {
-    "type":"Color",
+        "l",
+        "xl"]
+},
+{
+    "type": "Color",
     "list": [
-      "black",
-"blue" ,"red","green" ]
-  }]
+        "black",
+        "blue", "red", "green"]
+},{
+    "type": "Sort",
+    "list": [
+        "price:lowest first",
+        "price:hightest first", "Discount"]
+}
+]
 
 
 function MenPage() {
-    const {serach}= useContext(AuthConetxt);
+    const { serach } = useContext(AuthConetxt);
     let carddata = JSON.parse(localStorage.getItem("newcard_data"));
     if (carddata == null) {
         carddata = []
     }
+    let favdata = JSON.parse(localStorage.getItem("newfav_data"));
+    if (favdata == null) {
+        favdata = []
+    }
     const [product, setProduct] = useState([])
+    const [hrtIcone, sethrtIcone] = useState("♡")
     const [selectedFilter, setSelectedFilter] = useState('')
 
     const [loading, setloading] = useState(false)
@@ -97,42 +109,64 @@ function MenPage() {
         setloading(true)
         try {
             const data = await getData(`https://63f70245833c7c9c607b12bc.mockapi.io/product_eagle`)
-           
+
             let filteredData;
-   
- 
-    setProduct(data)
-    let price;
- 
-
-  if(selectedFilter=='588 AND ABOVE' )
-{
-    price=588;
-}
-else if(selectedFilter=='1000 AND ABOVE' )
-{
-    price=1000;
-}
-    if(selectedFilter)
-    {
 
 
-         filteredData=data.filter(item=>item.subTypes===selectedFilter ||item.size===selectedFilter|| item.color===selectedFilter  || item.price> price )
-            
-         setProduct(filteredData)
-       
-    }
-    if(serach)
-    {
-    
-    const filteredData =  product.filter((item) => {
-        return Object.values(item).join('').toLowerCase().includes(serach.toLowerCase())
-    })
-    console.log("___________",filteredData)
-    setProduct(filteredData)
-}
-      setloading(false)
-          
+            setProduct(data)
+            let price;
+
+
+            if (selectedFilter == '588 AND ABOVE') {
+                price = 588;
+            }
+            else if (selectedFilter == '1000 AND ABOVE') {
+                price = 1000;
+            }
+            if (selectedFilter) {
+                if(selectedFilter=='price:lowest first')
+                {
+                    console.log("here-->>",data)
+                    data.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+                    console.log("after here-->>",data)
+                    setProduct(data)
+                    setloading(false)
+                    return;
+                }
+                if(selectedFilter=='price:hightest first')
+                {
+                    console.log("here-->>",data)
+                    data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+                    console.log("after here-->>",data)
+                    setProduct(data)
+                    setloading(false)
+                    return;
+                }
+                if(selectedFilter=='Discount')
+                {
+                    console.log("here-->>",data)
+                    data.sort((a, b) => parseFloat(b.discount) - parseFloat(a.discount));
+                    console.log("after here-->>",data)
+                    setProduct(data)
+                    setloading(false)
+                    return;
+                }
+
+                filteredData = data.filter(item => item.subTypes === selectedFilter || item.size === selectedFilter || item.color === selectedFilter || item.price > price)
+
+                setProduct(filteredData)
+
+            }
+            if (serach) {
+
+                const filteredData = product.filter((item) => {
+                    return Object.values(item).join('').toLowerCase().includes(serach.toLowerCase())
+                })
+                console.log("___________", filteredData)
+                setProduct(filteredData)
+            }
+            setloading(false)
+
 
         } catch (error) {
             setloading(false)
@@ -146,95 +180,107 @@ else if(selectedFilter=='1000 AND ABOVE' )
     useEffect(() => {
         fetchApiData()
 
-    }, [page,selectedFilter,serach]);
+    }, [page, selectedFilter, serach]);
 
 
     useEffect(() => {
         setSarch({ page: page })
     }, [page]);
 
-    const cardData=(id)=>{
-   
-    for (let i = 0; i < product.length; i++) {
-        if(product[i].id==id){
-            carddata.push({...product[i],quantity:1})
+    const cardData = (id) => {
+
+        for (let i = 0; i < product.length; i++) {
+            if (product[i].id == id) {
+                carddata.push({ ...product[i], quantity: 1 })
+            }
         }
+        localStorage.setItem("newcard_data", JSON.stringify(carddata));
+        // console.log(menData)
     }
-    localStorage.setItem("newcard_data", JSON.stringify(carddata));
-    // console.log(menData)
+    const FavData = (id) => {
+        let sstIcone;
+        for (let i = 0; i < product.length; i++) {
+            if (product[i].id == id) {
+                favdata.push({ ...product[i], quantity: 1 })
+            //    sstIcone="❤"
+            }
+        }
+        localStorage.setItem("newfav_data", JSON.stringify(favdata));
+        // console.log(menData)
+        // sethrtIcone(sstIcone)
     }
 
     return (
-        
+
         <div style={{
             display: "flex",
             width: "90%",
             margin: "auto",
             padding: "10px",
             marginTop: "1px",
-            gap:"50px",
-           
+            gap: "50px",
+
         }}>
-           
+
             <div style={{
-                 position: "fixed",
-                 top: 0,
-                 left: 0,
-                
-              
-                width: "300px",
+                position: "fixed",
+                top: 0,
+                left: 0,
+                  width: "300px",
                 margin: "auto",
                 padding: "10px",
                 marginTop: "100px"
             }}>
                 <div >
-                <b>Filter</b>
-                <div style={{color:'gray'}}>{product.length}  items </div>
+                    <b>Filter</b>
+                    <div style={{ color: 'gray' }}>{product.length}  items </div>
                 </div>
-                <div style={{height:800,overflow:'scroll'}}>
-                <Accodion list={filterArray} setSelectedFilter={setSelectedFilter}  />
+                <div style={{ height: 800, overflow: 'scroll' }}>
+                    <Accodion list={filterArray} setSelectedFilter={setSelectedFilter} />
                 </div>
             </div>
-          
+
             <div>
-           
-                <div className="products-wrapper" style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
+
+            <SimpleGrid columns={[1,1, 2, 3]} spacing='40px' className="products-wrapper" style={{
+                   
                     alignItems: "center",
                     justifyContent: "space-around",
                     width: "80%",
                     margin: "auto",
                     gap: "10px",
-                 
-                    marginLeft:"250px"
+
+
+                    marginLeft: "250px"
                 }}>
 
 
 
-                    {     loading ?   <div style={{
-                    display: "flex",
-
-                   
-                    justifyContent: "center",
-                   
-
-                }}><Spinner /></div>:
-                product.length>0 ?
-                product?.map((e) => {
-if(e.mainTypes==='men')
-                        return (
-                            <CardItem data={e} cardData={cardData}
-                             />
-                            
-                        )
+                    {loading ? <div style={{
+                        display: "flex",
 
 
-                    }):<div style={ {display: "flex",justifyContent:'center'}}>
-                        No Data</div>}
-                    
+                        justifyContent: "center",
 
-                </div>
+
+                    }}><Spinner /></div> :
+                        product.length > 0 ?
+                            product?.map((e) => {
+                                if (e.mainTypes === 'men')
+                                    return (
+                                        <CardItem data={e} cardData={cardData}
+                                        FavData={FavData}
+                                        hrtIcone={hrtIcone}
+                                        />
+
+                                    )
+
+
+                            }) : <div style={{ display: "flex", justifyContent: 'center' }}>
+                                No Data</div>}
+
+
+                </SimpleGrid>
                 <br /><br />
                 {/* <div style={{
                     display: "flex",
@@ -274,7 +320,7 @@ if(e.mainTypes==='men')
                 </div> */}
 
             </div>
-            
+
         </div>
         // <div style={{
         //     //  border:"2px solid black",

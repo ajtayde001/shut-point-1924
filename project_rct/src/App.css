@@ -215,7 +215,7 @@ margin-top: 50px;
   }
 
   
-  .navbar {
+  .navbar1 {
     display: flex;
     position: relative;
     z-index: 999;
@@ -240,7 +240,7 @@ margin-top: 50px;
   {
     background-color: black;
   }
-  .nav-link {
+  .nav-link1 {
     padding: 20px;
     text-decoration: none;
     background-color: white;
@@ -256,14 +256,14 @@ margin-top: 50px;
     padding-right: 25px;
   }
   
-  .nav-link:hover {
+  .nav-link1:hover {
     padding: 20px;
     background-color: #0E1333;
     color: #fff;
   }
-  a.nav-link.active:hover {
+  /* a.nav-link.active:hover {
     color: white
-  }
+  } */
   .modal{
     position:absolute;
  display: flex;

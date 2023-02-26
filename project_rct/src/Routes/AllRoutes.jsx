@@ -13,19 +13,23 @@ import ProductPAge from '../pages/ProductPAge';
 import SingUp from '../pages/SingUp';
 import CardPage from '../pages/CardPage';
 import Checkout from '../pages/Checkout';
+import FavData from '../pages/FavraitePage';
+import PrivateRoute from './PrivateRoute';
 const AllRoutes = () => {
     return (
         <div>
           <Navbar/>
             <Routes>
                 <Route path="/" element={<MainPage />}></Route>
-                <Route path="/men" element={<MenPage />}></Route>
+                <Route path="/men" element={
+                 <PrivateRoute><MenPage /></PrivateRoute>}></Route>
                 <Route path="/products/:user_id" element={<ProductPAge />}></Route>
-                <Route path="/women" element={<WomenPage />}></Route>
-                <Route path="/winter" element={<WinterPage />}></Route>
-                <Route path="/sale" element={<SalePage />}></Route>
-                <Route path="/jeans" element={<JeansPage />}></Route>
+                <Route path="/women" element={ <PrivateRoute><WomenPage /></PrivateRoute>}></Route>
+                <Route path="/winter" element={<PrivateRoute><WinterPage /></PrivateRoute>}></Route>
+                <Route path="/sale" element={<PrivateRoute><SalePage /></PrivateRoute>}></Route>
+                <Route path="/jeans" element={<PrivateRoute><JeansPage /></PrivateRoute>}></Route>
                 <Route path="/_card" element={<CardPage />}></Route>
+                <Route path="/_fav" element={<FavData />}></Route>
                 <Route path="/checkout/:total" element={<Checkout />}></Route>
             
                 <Route path="/login" element={<Login />}></Route>

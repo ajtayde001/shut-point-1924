@@ -1,6 +1,7 @@
 
 
 import React from 'react'
+// import { Link } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import { Select } from '@chakra-ui/react'
@@ -11,7 +12,14 @@ const getData = (url) => {
 
 export default function ProductPAge() {
   const val = useParams()
-
+  let carddata = JSON.parse(localStorage.getItem("newcard_data"));
+    if (carddata == null) {
+        carddata = []
+    }
+    let favdata = JSON.parse(localStorage.getItem("newfav_data"));
+    if (favdata == null) {
+        favdata = []
+    }
   console.log(val)
   const [products, setProducts] = useState({})
 
@@ -32,6 +40,23 @@ export default function ProductPAge() {
 
   }, []);
 
+  const cardData = () => {
+
+            carddata.push({ ...products, quantity: 1 })
+   
+    localStorage.setItem("newcard_data", JSON.stringify(carddata));
+    // console.log(menData)
+}
+const FavData = () => {
+   alert("Item Added to Your Wish-List ")
+            favdata.push({ ...products, quantity: 1 })
+       
+       
+    
+    localStorage.setItem("newfav_data", JSON.stringify(favdata));
+    // console.log(menData)
+    // sethrtIcone(sstIcone)
+}
 
   return (
     <div>
@@ -89,8 +114,7 @@ export default function ProductPAge() {
             </div>
             <div  style={{  display: "flex", gap: "30px"}}>
               <div>
-
-                <button style={{
+              <Link to="/_card"  >   <button style={{
                   marginTop: "20px",
                   width: "200px",
                   height: "60px",
@@ -98,7 +122,8 @@ export default function ProductPAge() {
                   backgroundColor: "black",
                   color: "white"
 
-                }}  > Add To Card</button>
+                }} onClick={() => cardData()} > Add To Card</button></Link>
+               
               </div>
               <div>
 
@@ -110,7 +135,8 @@ export default function ProductPAge() {
                   // backgroundColor: "black",
                   // color: "white"
                   fontSize: "30px"
-                }}> ♡</button>
+                }}
+                onClick={() => FavData()}> ♡</button>
               </div>
             </div>
           </div>

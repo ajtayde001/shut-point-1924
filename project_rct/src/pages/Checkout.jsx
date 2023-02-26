@@ -54,10 +54,17 @@ const Checkout = () => {
 
     if(otp==interOtp){
       console.log("done")
-     
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
       setShow(true)
       setShow1(false)
     }else{
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
       console.log("rong")
       setShow1(true)
       setShow(false)
@@ -306,7 +313,7 @@ const Checkout = () => {
           <AlertDialogOverlay />
   
           <AlertDialogContent>
-            <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
+            <AlertDialogHeader>Enter Otp........</AlertDialogHeader>
             <AlertDialogCloseButton />
             <AlertDialogBody>
             <HStack>
@@ -319,7 +326,7 @@ const Checkout = () => {
   </HStack>
             </AlertDialogBody>
             <AlertDialogFooter>
-              <Button ref={cancelRef} rightIcon={<FaArrowRight />}
+              <Button colorScheme="green" ref={cancelRef} rightIcon={<FaArrowRight />}
               onClick={()=>{HandelSubmit()
                onClose()
                 }}>

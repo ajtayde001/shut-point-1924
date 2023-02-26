@@ -74,8 +74,9 @@
 // }
 
 
-// "{+++++++++++++++}"
 
+// "{+++++++++++++++}"
+import { Link } from "react-router-dom";
 import "../style/singup.css"
 import React from 'react'
 import {useState,useContext} from 'react'
@@ -87,7 +88,7 @@ function SingUp(){
     if (data == null) {
       data = []
     }
-    const {isAuth,login}= useContext(AuthConetxt);
+    const {isAuth,login,logOut}= useContext(AuthConetxt);
     const [email, setlogin]=useState("")
     const [password, setpass]=useState("")
     const [name, setname]=useState("")
@@ -104,7 +105,7 @@ function SingUp(){
         }
     if(isnew==true){
       setnamevalue("Account Created Successful")
-        login()
+        login(name)
         const valueIN={
             name,
             email,
@@ -120,30 +121,32 @@ function SingUp(){
       };
     }
     if(isAuth){
-      
+      logOut()
         return <Navigate to={"/login"}/>
     
            
           }
 return(
    
-<div className="main" style={{ width: "40%",
-  margin: "auto",
-  marginTop:" 5%",
-  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-  paddingTop: "2%",}}>
+// <div className="main" style={{ width: "40%",
+//   margin: "auto",
+//   marginTop:" 5%",
+//   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+//   paddingTop: "2%",}}>
 
 
 
- <div id="id01" className="modal">
-
+ <div id="id01" className="singUpal">
+ 
    <form className="modal-content" style={{ width: "40%",
 margin: "auto",
-marginTop:"10%",
+marginTop:"5%",
 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
 padding:"30px",
-paddingTop: "2%",}}>
+paddingTop: "2%"}}>
      <div className="container">
+     <Link to="/" ><div  style={{ textAlign:"center"}}className="logo"><img src={require('../images/logo.png')} style={{ width: 40, height: 30 }} /><b style={{ marginTop: 10 ,textAlign:"center"}}>Indian Eagle</b></div></Link>
+
      <h2 style={{fontSize:"30px"}}>{nameLoag}</h2>
        <label for="email"><b>Name</b></label>
        <input type="text" id="name" placeholder="Enter Your Name"
@@ -159,7 +162,7 @@ paddingTop: "2%",}}>
 
        <div className="clearfix">
 
-         <button style={{backgroundColor:"green",height:"50px"}} type="submit" id="signupbtn" onClick={submitChange}>Sign Up</button>
+         <button style={{backgroundColor:"black",color:"white",height:"50px"}} type="submit" id="signupbtn" onClick={submitChange}>Sign Up</button>
 
         
        </div>
@@ -167,7 +170,7 @@ paddingTop: "2%",}}>
    </form>
  </div>
 
-</div>
+// </div>
 
   
 )

@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect,useContext } from 'react';
 import { AuthConetxt } from '../Context/AuthContextProvider';
 import {
-  Input,Divider
+  Input,Divider,Text
 } from '@chakra-ui/react'
 import { FaSearch, FaHeart, FaShoppingBag ,FaUser} from 'react-icons/fa'
 function Navbar() {
   const [stickyClass, setStickyClass] = useState('');
   const [show, setShow] = useState(false);
-  const {serach,setSearch}= useContext(AuthConetxt);
+  const {serach,setSearch,user}= useContext(AuthConetxt);
 
   useEffect(() => {
     window.addEventListener('scroll', stickNavbar);
@@ -24,25 +24,28 @@ function Navbar() {
   };
   return (
     <div>
-      <div className={`navbar ${stickyClass}`} onMouseOver={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <div className={`navbar1 ${stickyClass}`} onMouseOver={() => setShow(true)} onMouseLeave={() => setShow(false)}>
         <Link to="/" ><div className="logo"><img src={require('../images/logo.png')} style={{ width: 40, height: 30 }} /><b style={{ marginTop: 10 }}>Indian Eagle</b></div></Link>
 
-        <Link to="/men" className='nav-link' >Men</Link>
-        <Link to="/women" className='nav-link'  >Women</Link>
-        <Link to="/jeans" className='nav-link'  >Jeans</Link>
-        <Link to="/winter" className='nav-link'  >Winter</Link>
-        <Link to="/sale" className='nav-link'  >sale</Link>
-        <Link to="/singup" className='nav-link'  >SingUp</Link>
+        <Link to="/men" className='nav-link1' >Men</Link>
+        <Link to="/women" className='nav-link1'  >Women</Link>
+        <Link to="/jeans" className='nav-link1'  >Jeans</Link>
+        <Link to="/winter" className='nav-link1'  >Winter</Link>
+        <Link to="/sale" className='nav-link1'  >sale</Link>
+       
+        {/* <Link to="/singup" className='nav-link'  >{user}</Link> */}
 
 
         
        
 
         <div className="icon" style={{  gap:"20px"}} >
+       
           <Input placeholder='Search' style={{ width: 200 }}onChange={(e)=>setSearch(e.target.value)} />
           <FaSearch fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} />
+          <Text style={{ marginTop:"10px" }} fontWeight={"bold"} fontSize='sm'>{user}</Text> 
           <Link to="/login"  >  <FaUser fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} /></Link>
-          <FaHeart fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} />
+          <Link to="/_fav"  ><FaHeart fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} /></Link>
           <Link to="/_card"  >    <FaShoppingBag fontSize="1.25rem" role={"button"} style={{ marginTop: 10, marginLeft: 10 }} /></Link>
         </div>
       </div>
